@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import db from "./db/config.js";
@@ -8,6 +8,11 @@ const app = express();
 app.listen(PORT, "0.0.0.0", () =>
   console.log(`Server is running successfully on PORT ${PORT}`)
 );
+
+
+app.get("/",function(request,response){
+  response.send({Message:"Server is running"}).status(200);
+})
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
